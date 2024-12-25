@@ -1,6 +1,6 @@
 package states;
 
-class PlayState extends State
+class SettingsState extends State
 {
 	override public function create()
 	{

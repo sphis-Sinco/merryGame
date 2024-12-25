@@ -12,8 +12,9 @@ typedef LangHaxe =
 
 typedef PhrasesJson =
 {
-	var ?yo_dude:String;
-	var ?what_are_you_doing:String;
+	var ?menu_play:String;
+	var ?menu_settings:String;
+	var ?menu_exit:String;
 }
 
 class PhraseManager
@@ -47,13 +48,10 @@ class PhraseManager
 		{
 			switch (Std.string(phrase).toLowerCase().replace(' ', '_'))
 			{
-				case 'yo_dude':
-					return json.yo_dude;
-				case 'what_are_you_doing':
-					return json.what_are_you_doing;
-
-				default:
-					trace('[PHRASE MANAGER] Unknown phrase: "$phrase"');
+				case 'menu_play': return json.menu_play;
+				case 'menu_settings': return json.menu_settings;
+				case 'menu_exit': return json.menu_exit;
+				default: trace('[PHRASE MANAGER] Unknown phrase: "$phrase"');
 			}
 		}
 		catch (e)
