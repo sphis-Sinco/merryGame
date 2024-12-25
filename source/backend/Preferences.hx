@@ -1,20 +1,28 @@
 package backend;
 
-import flixel.FlxG;
+import haxe.Json;
 import haxe.Timer;
 
 class Preferences
 {
-	public static var savefile:Save;
 	public static var savedata:GameSave;
+
+	public static var SAVE_PATH:String = BackendAssets.json('save');
 
 	public static function initPrefs()
 	{
 		Timer.measure(() ->
 		{
-			savefile.nullcheck();
-
-			savedata.language ??= savefile.savedata.language;
+			try {
+				savedata = Json.parse(Assets.getText(SAVE_PATH));
+			} catch(e) {
+				savedata = null;
+			}
+			
+			if (savedata == null)
+				savedata = {
+					language: "english"
+				}
 
 			save();
 		});
@@ -22,6 +30,8 @@ class Preferences
 
 	public static function save()
 	{
-		savefile.flush();
+		if (!BackendAssets.pathExists(SAVE_PATH)) BackendAssets.makePath(SAVE_PATH);
+
+		BackendAssets.saveToFile(SAVE_PATH, Json.stringify(savedata));
 	}
 }

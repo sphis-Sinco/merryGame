@@ -8,7 +8,8 @@ class Save extends FlxSave
 
 	public function nullcheck()
 	{
-		savedata.language ??= "english";
+		if (savedata.language == null)
+			savedata.language = 'english';
 	}
 }
 
