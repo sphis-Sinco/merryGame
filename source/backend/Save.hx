@@ -10,11 +10,6 @@ class Save extends FlxSave
 	{
 		savedata.language ??= "english";
 	}
-
-	public static function save()
-	{
-		flush();
-	}
 }
 
 typedef GameSave =

@@ -6,6 +6,6 @@ class LanguageManager
 
 	static function get_LANGUAGE():String
 	{
-		return Preferences.language;
+		return Preferences.savedata.language;
 	}
 }
