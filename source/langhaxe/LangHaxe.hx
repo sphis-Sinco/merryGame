@@ -41,7 +41,7 @@ class PhraseManager
 
         switch(Std.string(phrase).toLowerCase().replace(' ', '_'))
         {
-            case "language_leave":
+            case "language_leave", "credits_leave":
                 grabPhrase = 'options_leave';
 
             default:
@@ -54,14 +54,22 @@ class PhraseManager
 		}
 		catch (e)
 		{
-			if (!PHRASES_REQUIRING_FALLBACK.contains(phrase))
-			{
-				trace('[PHRASE MANAGER] Phrase "$phrase" required fallback');
-				PHRASES_REQUIRING_FALLBACK.push(phrase);
-			}
+			returnValue = '';
+		}
+
+		if (returnValue == '' || returnValue == null) {
+			phraseFallbackLogging(phrase);
 			returnValue = fallback;
 		}
 
 		return returnValue;
+	}
+
+	private static function phraseFallbackLogging(phrase:Dynamic) {
+		if (!PHRASES_REQUIRING_FALLBACK.contains(phrase))
+		{
+			trace('Phrase "$phrase" required fallback');
+			PHRASES_REQUIRING_FALLBACK.push(phrase);
+		}
 	}
 }

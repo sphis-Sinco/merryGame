@@ -3,6 +3,8 @@ package backend;
 class Assets
 {
 
+    public static var EXISTING_PATHS:Array<String> = [];
+
     public static function getPath(path:String) return '$path';
     public static function getAssetPath(path:String) return getPath('assets/$path');
 
@@ -15,12 +17,26 @@ class Assets
 
 
     public static function pathExists(path:String) {
+        var exists:Bool = false;
 
         #if desktop
-        return sys.FileSystem.exists(path);
+        exists = sys.FileSystem.exists(path);
         #end
+        
+		if (!EXISTING_PATHS.contains(path))
+		{
+			switch (exists)
+			{
+				case true:
+					trace('"$path" exists.');
+				default:
+					trace('"$path" does not exist.');
+			}
 
-        return false;
+			EXISTING_PATHS.push(path);
+		}
+
+        return exists;
     }
     
     public static function makePath(path:String) {
@@ -33,7 +49,7 @@ class Assets
     public static function readFile(path:String) {
 
         #if desktop
-        return sys.io.File.getContent(path);
+        if (pathExists(path)) return sys.io.File.getContent(path);
         #end
 
         return '';

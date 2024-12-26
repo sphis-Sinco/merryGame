@@ -7,6 +7,7 @@ class MenuState extends State
 {
 	public var options:Array<Dynamic> = [
 		['play', () -> FlxG.switchState(new PlayState())],
+		['credits', () -> FlxG.switchState(new CreditsState())],
 		['settings', () -> FlxG.switchState(new SettingsState())],
 		#if desktop ['exit', () -> Sys.exit(0)] #end
 	];
