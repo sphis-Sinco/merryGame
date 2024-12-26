@@ -10,6 +10,8 @@ class PlayState extends State
 	public var PLAYER_JUMP_MULTIPLIER:Float = 45;
 	public var PLAYER_CAN_JUMP:Bool = false;
 
+	public var SCORE:Null<Float> = 0.0;
+
 	public var player:Player;
 
 	override public function create()
@@ -17,6 +19,8 @@ class PlayState extends State
 		player = new Player(0,0);
 		player.screenCenter();
 		add(player);
+
+		SCORE = Preferences.savedata.score;
 
 		super.create();
 	}
@@ -37,6 +41,9 @@ class PlayState extends State
 			PLAYER_GRAVITY_TICKS = -(1 * PLAYER_JUMP_MULTIPLIER);
 			PLAYER_CAN_JUMP = false;
 		}
+
+		if (SCORE > Preferences.savedata.highscore)
+			Preferences.savedata.highscore = SCORE;
 
 		super.update(elapsed);
 	}
