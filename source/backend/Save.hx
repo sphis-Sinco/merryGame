@@ -6,12 +6,9 @@ class Save extends FlxSave
 {
 	public static function nullcheck(savedata:GameSave)
 	{
-		if (savedata.language == null)
-			savedata.language = 'english';
-		if (savedata.score == null)
-			savedata.score = 0;
-		if (savedata.highscore == null)
-			savedata.highscore = 0;
+		savedata.language ??= 'english';
+		savedata.score ??= 0;
+		savedata.highscore ??= 0;
 	}
 }
 
