@@ -7,23 +7,7 @@ typedef LangHaxe =
 	var name:String;
 	var ?asset_suffix:String;
 	var ?lang_ver:Float;
-	var ?phrases:PhrasesJson;
-}
-
-typedef PhrasesJson =
-{
-	var ?menu_play:String;
-	var ?menu_settings:String;
-	var ?menu_exit:String;
-
-	var ?options_leave:String;
-	var ?options_language_menu:String;
-
-	var ?language_english:String;
-	var ?language_italian:String;
-	var ?language_portuguese:String;
-
-	var ?score:String;
+	var ?phrases:haxe.DynamicAccess<String>;
 }
 
 class PhraseManager
@@ -50,24 +34,13 @@ class PhraseManager
 
 	public static function getPhrase(phrase:Dynamic, ?fb:Dynamic = null):Dynamic
 	{
-		var json:PhrasesJson = languageList.phrases;
+		var json:haxe.DynamicAccess<String> = languageList.phrases;
 		var fallback:Dynamic = (fb != null ? fb : phrase);
+		var returnValue:Dynamic;
 
 		try
 		{
-			switch (Std.string(phrase).toLowerCase().replace(' ', '_'))
-			{
-				case 'menu_play': return json.menu_play;
-				case 'menu_settings': return json.menu_settings;
-				case 'menu_exit': return json.menu_exit;
-				case 'options_leave' | 'language_leave': return json.options_leave;
-				case 'options_language_menu': return json.options_language_menu;
-				case 'language_english': return json.language_english;
-				case 'language_italian': return json.language_italian;
-				case 'language_portuguese': return json.language_portuguese;
-				case 'score': return json.score;
-				default: trace('[PHRASE MANAGER] Unknown phrase: "$phrase"');
-			}
+			returnValue = json.get(Std.string(phrase).toLowerCase().replace(' ', '_'));
 		}
 		catch (e)
 		{
@@ -76,9 +49,9 @@ class PhraseManager
 				trace('[PHRASE MANAGER] Phrase "$phrase" required fallback');
 				PHRASES_REQUIRING_FALLBACK.push(phrase);
 			}
-			return fallback;
+			returnValue = fallback;
 		}
 
-		return fallback;
+		return returnValue;
 	}
 }
