@@ -1,5 +1,6 @@
 package states;
 
+import flixel.text.FlxText;
 import states.game.*;
 
 class PlayState extends State
@@ -13,14 +14,18 @@ class PlayState extends State
 	public var SCORE:Null<Float> = 0.0;
 
 	public var player:Player;
+	public var scoreText:FlxText;
 
 	override public function create()
 	{
+		SCORE = 0;
+
 		player = new Player(0,0);
 		player.screenCenter();
 		add(player);
 
-		SCORE = Preferences.savedata.score;
+		scoreText = new FlxText(10,10,0,"",16);
+		add(scoreText);
 
 		super.create();
 	}
@@ -44,6 +49,8 @@ class PlayState extends State
 
 		if (SCORE > Preferences.savedata.highscore)
 			Preferences.savedata.highscore = SCORE;
+
+		scoreText.text = '${PhraseManager.getPhrase('score','score:')} $SCORE';
 
 		super.update(elapsed);
 	}

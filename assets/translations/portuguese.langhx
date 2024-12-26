@@ -11,6 +11,8 @@
 
       "language_english": "inglês",
       "language_italian": "italiano",
-      "language_portuguese": "português"
+      "language_portuguese": "português",
+
+      "score":"pontuação:"
     }
   }

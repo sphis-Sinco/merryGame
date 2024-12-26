@@ -11,6 +11,8 @@
 
       "language_english": "english",
       "language_italian": "italian",
-      "language_portuguese": "portuguese"
+      "language_portuguese": "portuguese",
+
+      "score":"score:"
     }
   }

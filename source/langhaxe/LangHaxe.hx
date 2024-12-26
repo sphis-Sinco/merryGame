@@ -22,6 +22,8 @@ typedef PhrasesJson =
 	var ?language_english:String;
 	var ?language_italian:String;
 	var ?language_portuguese:String;
+
+	var ?score:String;
 }
 
 class PhraseManager
@@ -63,6 +65,7 @@ class PhraseManager
 				case 'language_english': return json.language_english;
 				case 'language_italian': return json.language_italian;
 				case 'language_portuguese': return json.language_portuguese;
+				case 'score': return json.score;
 				default: trace('[PHRASE MANAGER] Unknown phrase: "$phrase"');
 			}
 		}
