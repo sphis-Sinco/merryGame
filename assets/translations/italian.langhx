@@ -2,15 +2,15 @@
     "name": "Italian",
     "lang_ver": 1,
     "phrases": {
-      "menu_play": "play",
-      "menu_settings": "settings",
-      "menu_exit": "exit",
+      "menu_play": "gioca",
+      "menu_settings": "opzioni",
+      "menu_exit": "esci",
       
-      "options_leave": "leave",
-      "options_language_menu": "language menu",
+      "options_leave": "esci",
+      "options_language_menu": "menù lingue",
 
-      "language_english": "english",
-      "language_italian": "italian",
-      "language_portuguese": "portuguese"
+      "language_english": "inglese",
+      "language_italian": "italiano",
+      "language_portuguese": "portoghese"
     }
   }
