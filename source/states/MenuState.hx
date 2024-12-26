@@ -63,9 +63,6 @@ class MenuState extends State
 		}
 	}
 
-	public function preCreate() {}
-	public function postCreate() {}
-
 	override public function update(elapsed:Float)
 	{
 		if (ControlManager.UI_UP_R || ControlManager.UI_DOWN_R){

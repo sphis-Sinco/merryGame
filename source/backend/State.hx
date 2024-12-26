@@ -14,7 +14,10 @@ class State extends FlxState
 		INPUT_ON_START = KeyChecker.getPressedKey(ANY);
 		super();
 	}
-	override public function create() {super.create();}
+	override public function create() {preCreate(); super.create(); postCreate();}
+
+	public function preCreate() {}
+	public function postCreate() {}
 
 	override public function update(elapsed:Float)
 	{

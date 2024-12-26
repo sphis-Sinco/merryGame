@@ -11,6 +11,7 @@ class Preferences
 
 	public static function initPrefs()
 	{
+		trace('Initalizing Preferences');
 		Timer.measure(() ->
 		{
 			try {
@@ -28,6 +29,7 @@ class Preferences
 			PhraseManager.init();
 
 			save();
+			trace('Preferences Initalizing Time');
 		});
 	}
 
@@ -37,6 +39,7 @@ class Preferences
 			if (!BackendAssets.pathExists(SAVE_PATH)) BackendAssets.makePath(SAVE_PATH);
 
 			BackendAssets.saveToFile(SAVE_PATH, Json.stringify(savedata));
+			trace('Saving Time');
 		});
 	}
 }
