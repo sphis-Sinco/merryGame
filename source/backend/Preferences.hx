@@ -16,6 +16,7 @@ class Preferences
 			try {
 				savedata = Json.parse(Assets.getText(SAVE_PATH));
 			} catch(e) {
+				trace(e);
 				savedata = null;
 			}
 			
@@ -24,14 +25,18 @@ class Preferences
 					language: "english"
 				}
 
+			PhraseManager.init();
+
 			save();
 		});
 	}
 
 	public static function save()
 	{
-		if (!BackendAssets.pathExists(SAVE_PATH)) BackendAssets.makePath(SAVE_PATH);
+		Timer.measure(() -> {
+			if (!BackendAssets.pathExists(SAVE_PATH)) BackendAssets.makePath(SAVE_PATH);
 
-		BackendAssets.saveToFile(SAVE_PATH, Json.stringify(savedata));
+			BackendAssets.saveToFile(SAVE_PATH, Json.stringify(savedata));
+		});
 	}
 }

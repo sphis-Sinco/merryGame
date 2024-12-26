@@ -10,7 +10,6 @@ class Main extends Sprite
 		super();
 
 		Preferences.initPrefs();
-		PhraseManager.init();
 
 		addChild(new FlxGame(0, 0, MenuState));
 	}

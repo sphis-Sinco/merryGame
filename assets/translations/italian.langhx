@@ -2,7 +2,15 @@
     "name": "Italian",
     "lang_ver": 1,
     "phrases": {
-      "yo_dude": "Yo Dude",
-      "what_are_you_doing": "What are you doing"
+      "menu_play": "play",
+      "menu_settings": "settings",
+      "menu_exit": "exit",
+      
+      "options_leave": "leave",
+      "options_language_menu": "language menu",
+
+      "language_english": "english",
+      "language_italian": "italian",
+      "language_portuguese": "portuguese"
     }
   }

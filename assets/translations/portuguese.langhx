@@ -2,7 +2,15 @@
     "name": "Portuguese",
     "lang_ver": 1,
     "phrases": {
-      "yo_dude": "Yo Dude",
-      "what_are_you_doing": "What are you doing"
+      "menu_play": "jogar",
+      "menu_settings": "opções",
+      "menu_exit": "sair",
+      
+      "options_leave": "sair",
+      "options_language_menu": "menu de linguagens",
+
+      "language_english": "inglês",
+      "language_italian": "italiano",
+      "language_portuguese": "português"
     }
   }

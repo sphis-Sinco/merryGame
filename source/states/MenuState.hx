@@ -5,31 +5,42 @@ import flixel.text.FlxText;
 
 class MenuState extends State
 {
-	public static var options:Array<Dynamic> = [
+	public var options:Array<Dynamic> = [
 		['play', () -> FlxG.switchState(new PlayState())],
 		['settings', () -> FlxG.switchState(new SettingsState())],
 		#if desktop ['exit', () -> Sys.exit(0)] #end
 	];
 
-	public static var optGrp:FlxTypedGroup<FlxText>;
+	public var phrasePrefix:String = 'menu';
 
-	public var CURSEL:Int;
+	public var optGrp:FlxTypedGroup<FlxText>;
+
+	public var CURSEL:Int = 0;
+
+	override public function new(selected:Int = 0) {
+		super();
+
+		CURSEL = selected;
+	}
 
 	override public function create()
 	{
+		preCreate();
+
 		optGrp = new FlxTypedGroup<FlxText>();
 		add(optGrp);
 
 		var index:Int = 0;
 		for (opt in options)
 		{
-			var optionText:FlxText = new FlxText(10, 10 + (index * 48), 0, PhraseManager.getPhrase('menu_${opt[0]}', opt[0]), 32);
+			var optionText:FlxText = new FlxText(10, 10 + (index * 48), 0, PhraseManager.getPhrase('${phrasePrefix}_${opt[0]}', opt[0]), 32);
 			optionText.ID = index;
 			optGrp.add(optionText);
 
 			index++;
 		}
 
+		postCreate();
 		updateText();
 
 		super.create();
@@ -52,6 +63,9 @@ class MenuState extends State
 		}
 	}
 
+	public function preCreate() {}
+	public function postCreate() {}
+
 	override public function update(elapsed:Float)
 	{
 		if (ControlManager.UI_UP_R || ControlManager.UI_DOWN_R){
@@ -67,7 +81,7 @@ class MenuState extends State
 
 			updateText();
 		} else if (ControlManager.UI_SELECT_R ) {
-            options[CURSEL][1]();
+            try {options[CURSEL][1]();}catch(e){trace(e);}
         }
 
 		super.update(elapsed);

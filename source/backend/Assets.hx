@@ -37,4 +37,13 @@ class Assets
         #end
     }
     
+    public static function readDirectory(directory:String) {
+
+        #if desktop
+        return sys.FileSystem.readDirectory(directory);
+        #end
+
+        return [];
+    }
+    
 }
