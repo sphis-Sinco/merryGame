@@ -21,10 +21,9 @@ class Preferences
 				savedata = null;
 			}
 			
-			if (savedata == null)
-				savedata = {
-					language: "english"
-				}
+			savedata ??= {};
+
+			Save.nullcheck(savedata);
 
 			PhraseManager.init();
 
