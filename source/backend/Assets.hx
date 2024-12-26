@@ -30,6 +30,15 @@ class Assets
         #end
     }
     
+    public static function readFile(path:String) {
+
+        #if desktop
+        return sys.io.File.getContent(path);
+        #end
+
+        return '';
+    }
+    
     public static function saveToFile(path:String, content:String) {
 
         #if desktop

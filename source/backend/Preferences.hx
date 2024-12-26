@@ -15,7 +15,7 @@ class Preferences
 		Timer.measure(() ->
 		{
 			try {
-				savedata = Json.parse(Assets.getText(SAVE_PATH));
+				savedata = Json.parse(BackendAssets.readFile(SAVE_PATH));
 			} catch(e) {
 				trace(e);
 				savedata = null;
