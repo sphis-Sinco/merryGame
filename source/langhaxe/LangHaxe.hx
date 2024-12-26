@@ -32,10 +32,10 @@ class PhraseManager
 		trace("Language \"" + Preferences.savedata.language + "\" loaded.");
 	}
 
-	public static function getPhrase(phrase:Dynamic, ?fb:Dynamic = null):Dynamic
+	public static function getPhrase(phrase:Dynamic, ?fallbackparam:Dynamic = null):Dynamic
 	{
 		var json:haxe.DynamicAccess<String> = languageList.phrases;
-		var fallback:Dynamic = (fb != null ? fb : phrase);
+		var fallback:Dynamic = (fallbackparam != null ? fallbackparam : phrase);
 		var returnValue:Dynamic;
         var grabPhrase:Dynamic;
 
