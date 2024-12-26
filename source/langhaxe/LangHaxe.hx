@@ -37,10 +37,20 @@ class PhraseManager
 		var json:haxe.DynamicAccess<String> = languageList.phrases;
 		var fallback:Dynamic = (fb != null ? fb : phrase);
 		var returnValue:Dynamic;
+        var grabPhrase:Dynamic;
+
+        switch(Std.string(phrase).toLowerCase().replace(' ', '_'))
+        {
+            case "language_leave":
+                grabPhrase = 'options_leave';
+
+            default:
+                grabPhrase = Std.string(phrase).toLowerCase().replace(' ', '_');
+        }
 
 		try
 		{
-			returnValue = json.get(Std.string(phrase).toLowerCase().replace(' ', '_'));
+			returnValue = json.get(grabPhrase);
 		}
 		catch (e)
 		{
