@@ -9,10 +9,24 @@
       
       "options_leave": "leave",
       "options_language_menu": "language menu",
+      "options_controls_menu": "controls menu",
 
       "language_english": "english",
       "language_italian": "italian",
       "language_portuguese": "portuguese",
+
+      "controls_changing_keybind": "Changing Keybind",
+      "controls_current_key": "current key",
+      "controls_press": "Press",
+      "controls_to_cancel":"to cancel",
+
+      "controls_ui_back":"ui_back",
+      "controls_ui_select":"ui_select",
+      "controls_ui_down":"ui_down",
+      "controls_ui_up":"ui_up",
+      "controls_move_right":"move_right",
+      "controls_move_left":"move_left",
+      "controls_jump":"jump",
 
       "score":"score:",
       "paused":"PAUSED"

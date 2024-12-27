@@ -23,6 +23,7 @@ class PlayState extends State
 	public var player:Player;
 
 	public var candycane:CandyCane;
+	public var candycaneCollision:FlxSprite;
 
 	public var scoreText:FlxText;
 
@@ -37,6 +38,9 @@ class PlayState extends State
 		candycane.screenCenter();
 		candycane.y -= 64;
 		candycane.x = FlxG.width + candycane.width;
+
+		candycaneCollision = new FlxSprite(0,0).makeGraphic(32, 64, FlxColor.RED);
+		candycaneCollision.visible = false;
 		
 		scoreText = new FlxText(10,10,0,"",16);
 	}
@@ -47,6 +51,7 @@ class PlayState extends State
 
 		add(player);
 		add(candycane);
+		add(candycaneCollision);
 		add(scoreText);
 
 		postCreate();
@@ -85,13 +90,15 @@ class PlayState extends State
 		if (candycane.x < 0 - candycane.width && !PAUSED) {
 			candycane.x = FlxG.width + candycane.width;
 			CANDY_CANE_MOVEMENT_SPEED += CANDY_CANE_MOVEMENT_MODIFIER;
+			candycane.reloadGraphic();
 		}
 
-		if (player.overlaps(candycane) && !PAUSED)
+		if (player.overlaps(candycaneCollision) && !PAUSED)
 		{
 			SCORE++;
 			candycane.x = FlxG.width + candycane.width;
 			CANDY_CANE_MOVEMENT_SPEED -= CANDY_CANE_MOVEMENT_MODIFIER;
+			candycane.reloadGraphic();
 		}
 
 		if (ControlManager.UI_SELECT_R && !PAUSED && PAUSE_TIME < 1)
@@ -105,6 +112,8 @@ class PlayState extends State
 		} else if (!PAUSED && PAUSE_TIME > 0) {
 			PAUSE_TIME -= 0.1;
 		}
+
+		candycaneCollision.setPosition(candycane.getGraphicMidpoint().x, candycane.getGraphicMidpoint().y);
 
 		super.update(elapsed);
 	}

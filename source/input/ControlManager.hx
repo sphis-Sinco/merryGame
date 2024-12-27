@@ -10,13 +10,13 @@ class ControlManager
 	**/
 	public static var KEYBINDS:Map<String, Array<FlxKey>> = [
 		// ui keys
-		'ui_up' => [UP, W],
-		'ui_down' => [DOWN, S],
+		'ui_up' => [W, UP],
+		'ui_down' => [S, DOWN],
 		'ui_select' => [ENTER],
 		'ui_back' => [ESCAPE],
 		// gameplay keys
-		'move_left' => [LEFT, A],
-		'move_right' => [RIGHT, D],
+		'move_left' => [A, LEFT],
+		'move_right' => [D, RIGHT],
 		'jump' => [SPACE]
 	];
 

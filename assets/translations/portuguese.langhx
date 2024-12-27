@@ -9,12 +9,21 @@
       
       "options_leave": "sair",
       "options_language_menu": "menu de linguagens",
+      "options_controls_menu": "controls menu",
 
       "language_english": "inglês",
       "language_italian": "italiano",
       "language_portuguese": "português",
 
+      "controls_ui_back":"ui_back",
+      "controls_ui_select":"ui_select",
+      "controls_ui_down":"ui_down",
+      "controls_ui_up":"ui_up",
+      "controls_move_right":"move_right",
+      "controls_move_left":"move_left",
+      "controls_jump":"jump",
+
       "score":"pontuação:",
-      "paused":"PAUSED"
+      "paused":"PAUSADO"
     }
   }

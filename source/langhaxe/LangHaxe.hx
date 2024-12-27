@@ -41,7 +41,7 @@ class PhraseManager
 
         switch(Std.string(phrase).toLowerCase().replace(' ', '_'))
         {
-            case "language_leave", "credits_leave":
+            case "language_leave", "credits_leave", "controls_leave":
                 grabPhrase = 'options_leave';
 
             default:

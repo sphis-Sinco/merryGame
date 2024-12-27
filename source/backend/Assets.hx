@@ -6,7 +6,7 @@ class Assets
     public static var EXISTING_PATHS:Array<String> = [];
 
     public static function getPath(path:String) {
-        if (pathExists(path)) return '$path'; else return '';
+        if (EXISTING_PATHS.contains(path) || pathExists(path)) return '$path'; else return '';
     }
     public static function getAssetPath(path:String) return getPath('assets/$path');
 

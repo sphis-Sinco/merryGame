@@ -50,7 +50,9 @@ class PauseSubState extends SubState
 			PlayState.PAUSED = false;
 
 			if (!PlayState.PAUSED)
-				tweenOut(0);
+				tweenOut(() -> {
+					
+				});
 		}
 		else if (ControlManager.UI_BACK_R && PlayState.PAUSED)
 		{
