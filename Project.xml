@@ -35,6 +35,8 @@
 	<source path="source" />
 	<assets path="assets" />
 
+	<define name="PRELOAD" if="preload" />
+
 	<!-- _______________________________ Libraries ______________________________ -->
 
 	<haxelib name="flixel" />

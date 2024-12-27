@@ -41,6 +41,9 @@ class Assets
 		exists = sys.FileSystem.exists(path);
 		#end
 
+		if (path == '')
+			return exists;
+
 		if (!EXISTING_PATHS.contains(path))
 		{
 			trace('checked path: "$path" ${exists ? 'exists' : 'does not exist'}.');
@@ -91,5 +94,27 @@ class Assets
 		#end
 
 		return [];
+	}
+
+	public static function checkDirectory(directory:String)
+	{
+		
+		for (path in BackendAssets.readDirectory(BackendAssets.getAssetPath('$directory')))
+			{
+				BackendAssets.pathExists(BackendAssets.getAssetPath('$directory/' + path));
+
+				if (!path.contains('.'))
+				{
+					for (item in BackendAssets.readDirectory(BackendAssets.getAssetPath('$directory/' + path)))
+					{
+						BackendAssets.pathExists(BackendAssets.getAssetPath('$directory/$path/' + item));
+
+						if (!item.contains('.'))
+						{
+							checkDirectory(BackendAssets.getAssetPath('$directory/$path/' + item));
+						}
+					}
+				}
+			}
 	}
 }

@@ -9,8 +9,6 @@ class Main extends Sprite
 	{
 		super();
 
-		Preferences.initPrefs();
-
 		addChild(new FlxGame(0, 0, InitState));
 	}
 }
