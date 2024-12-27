@@ -74,8 +74,10 @@ class MenuState extends State
 
 			if (CURSEL < 0)
 				CURSEL = 0;
-			if (CURSEL >= options.length)
+			else if (CURSEL >= options.length)
 				CURSEL = options.length - 1;
+			else
+				FlxG.sound.play(BackendAssets.sound('menu/Scroll'), 1);
 
 			updateText();
 		}
@@ -84,6 +86,10 @@ class MenuState extends State
 			try
 			{
 				options[CURSEL][1]();
+				if (Std.string(options[CURSEL][0]).toLowerCase() == 'leave')
+					FlxG.sound.play(BackendAssets.sound('menu/Leave'), 1);
+				else
+					FlxG.sound.play(BackendAssets.sound('menu/Select'), 1);
 			}
 			catch (e)
 			{

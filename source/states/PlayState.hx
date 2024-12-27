@@ -74,6 +74,8 @@ class PlayState extends State
 					player.y = FlxG.height / 2;
 					PLAYER_CAN_JUMP = true;
 				}
+
+				FlxG.sound.play(BackendAssets.sound('gameplay/jump'), 1);
 			}
 			else if (ControlManager.JUMP_R && PLAYER_CAN_JUMP)
 			{
@@ -101,6 +103,7 @@ class PlayState extends State
 			candycane.x = FlxG.width + candycane.width;
 			CANDY_CANE_MOVEMENT_SPEED -= CANDY_CANE_MOVEMENT_MODIFIER;
 			candycane.reloadGraphic();
+			FlxG.sound.play(BackendAssets.sound('gameplay/pickup'), 1);
 		}
 
 		if (ControlManager.UI_SELECT_R && !PAUSED && PAUSE_TIME < 1)
@@ -109,6 +112,7 @@ class PlayState extends State
 
 			if (PAUSED)
 			{
+				FlxG.sound.play(BackendAssets.sound('gameplay/pause'), 1);
 				openSubState(new PauseSubState());
 				PAUSE_TIME = 1.0;
 			}
