@@ -1,5 +1,6 @@
 package modding;
 
+#if !hl
 import polymod.*;
 
 class Initalizer
@@ -13,3 +14,4 @@ class Initalizer
     }
     
 }
+#end
