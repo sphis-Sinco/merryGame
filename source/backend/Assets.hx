@@ -5,7 +5,9 @@ class Assets
 
     public static var EXISTING_PATHS:Array<String> = [];
 
-    public static function getPath(path:String) return '$path';
+    public static function getPath(path:String) {
+        if (pathExists(path)) return '$path'; else return '';
+    }
     public static function getAssetPath(path:String) return getPath('assets/$path');
 
     public static function getDataPath(path:String) return getAssetPath('data/$path');
@@ -14,7 +16,6 @@ class Assets
     public static function json(file:String) return getDataPath('$file.json');
 
     public static function image(file:String) return getAssetPath('images/$file.png');
-
 
     public static function pathExists(path:String) {
         var exists:Bool = false;
@@ -28,9 +29,9 @@ class Assets
 			switch (exists)
 			{
 				case true:
-					trace('"$path" exists.');
+					trace('checked path: "$path" exists.');
 				default:
-					trace('"$path" does not exist.');
+					trace('checked path: "$path" does not exist.');
 			}
 
 			EXISTING_PATHS.push(path);
