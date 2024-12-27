@@ -17,7 +17,8 @@ class SettingsState extends MenuState
 		super.preCreate();
 	}
 
-	override public function update(elapsed:Float) {
+	override public function update(elapsed:Float)
+	{
 		super.update(elapsed);
 	}
 }

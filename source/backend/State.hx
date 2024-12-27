@@ -9,14 +9,20 @@ class State extends FlxState
 	**/
 	public var INPUT_ON_START:Bool = false;
 
-	override public function new() {
+	override public function new()
+	{
 		ControlManager.resetControls();
 		INPUT_ON_START = KeyChecker.getPressedKey(ANY);
 		super();
 	}
-	override public function create() {super.create();}
+
+	override public function create()
+	{
+		super.create();
+	}
 
 	public function preCreate() {}
+
 	public function postCreate() {}
 
 	override public function update(elapsed:Float)

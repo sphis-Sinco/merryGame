@@ -1,8 +1,5 @@
 package states.settings;
 
-import flixel.group.FlxGroup.FlxTypedGroup;
-import flixel.text.FlxText;
-
 class LanguageMenu extends MenuState
 {
 	override public function preCreate()

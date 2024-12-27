@@ -23,7 +23,8 @@ class MenuState extends State
 	public var TEXT_SIZE:Int = 32;
 	public var TEXT_PADDING:Float = 48;
 
-	override public function new(selected:Int = 0) {
+	override public function new(selected:Int = 0)
+	{
 		super();
 
 		CURSEL = selected;
@@ -46,36 +47,26 @@ class MenuState extends State
 			index++;
 		}
 
-		
-
 		postCreate();
 		updateText();
 
 		super.create();
 	}
-	
-	var blk:FlxSprite;
 
 	function updateText()
 	{
 		for (member in optGrp.members)
 		{
-			member.x = 10;
-			member.color = FlxColor.WHITE;
-			member.alpha = 0.5;
-
-			if (member.ID == CURSEL)
-			{
-				member.x = 20;
-				member.color = FlxColor.YELLOW;
-				member.alpha = 1.0;
-			}
+			member.x = (member.ID == CURSEL ? 20 : 10);
+			member.color = (member.ID == CURSEL ? FlxColor.YELLOW : FlxColor.WHITE);
+			member.alpha = (member.ID == CURSEL ? 1 : 0.5);
 		}
 	}
 
 	override public function update(elapsed:Float)
 	{
-		if (ControlManager.UI_UP_R || ControlManager.UI_DOWN_R){
+		if (ControlManager.UI_UP_R || ControlManager.UI_DOWN_R)
+		{
 			if (ControlManager.UI_UP_R)
 				CURSEL--;
 			if (ControlManager.UI_DOWN_R)
@@ -87,9 +78,18 @@ class MenuState extends State
 				CURSEL = options.length - 1;
 
 			updateText();
-		} else if (ControlManager.UI_SELECT_R ) {
-            try {options[CURSEL][1]();}catch(e){trace(e);}
-        }
+		}
+		else if (ControlManager.UI_SELECT_R)
+		{
+			try
+			{
+				options[CURSEL][1]();
+			}
+			catch (e)
+			{
+				trace(e);
+			}
+		}
 
 		super.update(elapsed);
 	}

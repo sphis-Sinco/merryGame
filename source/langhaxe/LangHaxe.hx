@@ -37,16 +37,16 @@ class PhraseManager
 		var json:haxe.DynamicAccess<String> = languageList.phrases;
 		var fallback:Dynamic = (fallbackparam != null ? fallbackparam : phrase);
 		var returnValue:Dynamic;
-        var grabPhrase:Dynamic;
+		var grabPhrase:Dynamic;
 
-        switch(Std.string(phrase).toLowerCase().replace(' ', '_'))
-        {
-            case "language_leave", "credits_leave", "controls_leave":
-                grabPhrase = 'options_leave';
+		switch (Std.string(phrase).toLowerCase().replace(' ', '_'))
+		{
+			case "language_leave", "credits_leave", "controls_leave":
+				grabPhrase = 'options_leave';
 
-            default:
-                grabPhrase = Std.string(phrase).toLowerCase().replace(' ', '_');
-        }
+			default:
+				grabPhrase = Std.string(phrase).toLowerCase().replace(' ', '_');
+		}
 
 		try
 		{
@@ -57,7 +57,8 @@ class PhraseManager
 			returnValue = '';
 		}
 
-		if (returnValue == '' || returnValue == null) {
+		if (returnValue == '' || returnValue == null)
+		{
 			phraseFallbackLogging(phrase);
 			returnValue = fallback;
 		}
@@ -65,7 +66,8 @@ class PhraseManager
 		return returnValue;
 	}
 
-	private static function phraseFallbackLogging(phrase:Dynamic) {
+	private static function phraseFallbackLogging(phrase:Dynamic)
+	{
 		if (!PHRASES_REQUIRING_FALLBACK.contains(phrase))
 		{
 			trace('Phrase "$phrase" required fallback');

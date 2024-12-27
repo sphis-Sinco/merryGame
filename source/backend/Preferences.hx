@@ -14,13 +14,16 @@ class Preferences
 		trace('Initalizing Preferences');
 		Timer.measure(() ->
 		{
-			try {
+			try
+			{
 				savedata = Json.parse(BackendAssets.readFile(SAVE_PATH));
-			} catch(e) {
+			}
+			catch (e)
+			{
 				trace(e);
 				savedata = null;
 			}
-			
+
 			savedata ??= {};
 
 			Save.nullcheck(savedata);
@@ -34,8 +37,10 @@ class Preferences
 
 	public static function save()
 	{
-		Timer.measure(() -> {
-			if (!BackendAssets.pathExists(SAVE_PATH)) BackendAssets.makePath(SAVE_PATH);
+		Timer.measure(() ->
+		{
+			if (!BackendAssets.pathExists(SAVE_PATH))
+				BackendAssets.makePath(SAVE_PATH);
 
 			BackendAssets.saveToFile(SAVE_PATH, Json.stringify(savedata));
 			trace('Saving Time');
