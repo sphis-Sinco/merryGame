@@ -18,11 +18,7 @@ class InitState extends State
         #if PRELOAD
         Timer.measure(() ->
 		{
-			BackendAssets.checkDirectory('data');
-			BackendAssets.checkDirectory('images');
-			BackendAssets.checkDirectory('sounds');
-			BackendAssets.checkDirectory('music');
-			BackendAssets.checkDirectory(Language.LANGUAGE_FOLDER);
+			BackendAssets.checkDirectory('assets');
             trace('Preload Time');
 		});
 		#end

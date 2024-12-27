@@ -99,19 +99,19 @@ class Assets
 	public static function checkDirectory(directory:String)
 	{
 		
-		for (path in BackendAssets.readDirectory(BackendAssets.getAssetPath('$directory')))
+		for (path in BackendAssets.readDirectory(BackendAssets.getPath('$directory')))
 			{
-				BackendAssets.pathExists(BackendAssets.getAssetPath('$directory/' + path));
+				BackendAssets.pathExists(BackendAssets.getPath('$directory/' + path));
 
 				if (!path.contains('.'))
 				{
-					for (item in BackendAssets.readDirectory(BackendAssets.getAssetPath('$directory/' + path)))
+					for (item in BackendAssets.readDirectory(BackendAssets.getPath('$directory/' + path)))
 					{
-						BackendAssets.pathExists(BackendAssets.getAssetPath('$directory/$path/' + item));
+						BackendAssets.pathExists(BackendAssets.getPath('$directory/$path/' + item));
 
 						if (!item.contains('.'))
 						{
-							checkDirectory(BackendAssets.getAssetPath('$directory/$path/' + item));
+							checkDirectory(BackendAssets.getPath('$directory/$path/' + item));
 						}
 					}
 				}
