@@ -27,6 +27,12 @@ class Assets
 	public static function image(file:String)
 		return getAssetPath('images/$file.png');
 
+	public static function sound(file:String)
+		return getAssetPath('sounds/$file.wav');
+
+	public static function track(file:String)
+		return getAssetPath('music/$file.wav');
+
 	public static function pathExists(path:String)
 	{
 		var exists:Bool = false;
@@ -54,7 +60,14 @@ class Assets
 	public static function makePath(path:String, ?content:String = '')
 	{
 		#if sys
-		try { sys.io.File.saveContent(path, content); } catch(e) { trace(e); }
+		try
+		{
+			sys.io.File.saveContent(path, content);
+		}
+		catch (e)
+		{
+			trace(e);
+		}
 		#end
 	}
 
