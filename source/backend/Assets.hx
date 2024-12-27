@@ -8,8 +8,8 @@ class Assets
 	{
 		if (EXISTING_PATHS.contains(path) || pathExists(path))
 			return '$path';
-		else
-			return '';
+		
+		return '';
 	}
 
 	public static function getAssetPath(path:String)
@@ -43,13 +43,7 @@ class Assets
 
 		if (!EXISTING_PATHS.contains(path))
 		{
-			switch (exists)
-			{
-				case true:
-					trace('checked path: "$path" exists.');
-				default:
-					trace('checked path: "$path" does not exist.');
-			}
+			trace('checked path: "$path" ${exists ? 'exists' : 'does not exist'}.');
 
 			EXISTING_PATHS.push(path);
 		}
