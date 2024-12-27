@@ -2,6 +2,7 @@ package states;
 
 import flixel.text.FlxText;
 import states.game.*;
+import substate.PauseSubState;
 
 class PlayState extends State
 {
@@ -16,6 +17,8 @@ class PlayState extends State
 
 	public var SCORE:Null<Float> = 0.0;
 
+	public static var PAUSED:Bool = false;
+
 	public var player:Player;
 
 	public var candycane:CandyCane;
@@ -25,7 +28,10 @@ class PlayState extends State
 	override function preCreate() {
 		super.preCreate();
 		SCORE = 0;
-		
+	}
+
+	override public function create()
+	{
 		player = new Player(0,0);
 		player.screenCenter();
 
@@ -35,10 +41,7 @@ class PlayState extends State
 		candycane.x = FlxG.width + candycane.width;
 		
 		scoreText = new FlxText(10,10,0,"",16);
-	}
 
-	override public function create()
-	{	
 		add(player);
 		add(candycane);
 		add(scoreText);
@@ -48,19 +51,24 @@ class PlayState extends State
 
 	override public function update(elapsed:Float)
 	{
-		if (!ControlManager.JUMP_R)
+		if (!PAUSED)
 		{
-			player.y += GRAVITY * ((PLAYER_GRAVITY_TICKS / 10) + 1);
-			PLAYER_GRAVITY_TICKS++;
 
-			if (player.y >= (FlxG.height / 2)) {
-				player.y = FlxG.height / 2;
-				PLAYER_CAN_JUMP = true;
-			}
+			if (!ControlManager.JUMP_R)
+				{
+					player.y += GRAVITY * ((PLAYER_GRAVITY_TICKS / 10) + 1);
+					PLAYER_GRAVITY_TICKS++;
+		
+					if (player.y >= (FlxG.height / 2)) {
+						player.y = FlxG.height / 2;
+						PLAYER_CAN_JUMP = true;
+					}
+		
+				} else if (ControlManager.JUMP_R && PLAYER_CAN_JUMP) {
+					PLAYER_GRAVITY_TICKS = -(1 * PLAYER_JUMP_MULTIPLIER);
+					PLAYER_CAN_JUMP = false;
+				}
 
-		} else if (ControlManager.JUMP_R && PLAYER_CAN_JUMP) {
-			PLAYER_GRAVITY_TICKS = -(1 * PLAYER_JUMP_MULTIPLIER);
-			PLAYER_CAN_JUMP = false;
 		}
 
 		if (SCORE > Preferences.savedata.highscore)
@@ -69,16 +77,23 @@ class PlayState extends State
 		scoreText.text = '${PhraseManager.getPhrase('score','score:')} $SCORE';
 
 		candycane.x -= CANDY_CANE_MOVEMENT_SPEED;
-		if (candycane.x < 0 - candycane.width) {
+		if (candycane.x < 0 - candycane.width && !PAUSED) {
 			candycane.x = FlxG.width + candycane.width;
 			CANDY_CANE_MOVEMENT_SPEED += CANDY_CANE_MOVEMENT_MODIFIER;
 		}
 
-		if (player.overlaps(candycane))
+		if (player.overlaps(candycane) && !PAUSED)
 		{
 			SCORE++;
 			candycane.x = FlxG.width + candycane.width;
 			CANDY_CANE_MOVEMENT_SPEED -= CANDY_CANE_MOVEMENT_MODIFIER;
+		}
+
+		if (ControlManager.UI_SELECT_R && !PAUSED)
+		{
+			PAUSED = true;
+
+			if (PAUSED) openSubState(new PauseSubState());
 		}
 
 		super.update(elapsed);
