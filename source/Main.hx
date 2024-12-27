@@ -11,6 +11,6 @@ class Main extends Sprite
 
 		Preferences.initPrefs();
 
-		addChild(new FlxGame(0, 0, MenuState));
+		addChild(new FlxGame(0, 0, InitState));
 	}
 }
