@@ -7,6 +7,7 @@ class PauseSubState extends SubState
 {
 	public var blackscreen:FlxSprite;
 	public var pauseText:FlxText;
+	public var tipText:FlxText;
 
 	public static var PAUSE_RETURNING_TO_MAINMENU:Bool = true;
 
@@ -23,6 +24,9 @@ class PauseSubState extends SubState
 		pauseText.screenCenter(X);
 		pauseText.alpha = 0;
 		pauseText.y = 10;
+
+		tipText = new FlxText(0,0,0, "", 32);
+		tipText.text = "";
 	}
 
 	override function create()
@@ -51,7 +55,7 @@ class PauseSubState extends SubState
 
 			if (!PlayState.PAUSED)
 				tweenOut(() -> {
-					
+
 				});
 		}
 		else if (ControlManager.UI_BACK_R && PlayState.PAUSED)
