@@ -4,6 +4,7 @@
     "phrases": {
       "menu_play": "play",
       "menu_settings": "settings",
+      "menu_credits": "credits",
       "menu_exit": "exit",
       
       "options_leave": "leave",

@@ -18,6 +18,9 @@ class MenuState extends State
 
 	public var CURSEL:Int = 0;
 
+	public var TEXT_SIZE:Int = 32;
+	public var TEXT_PADDING:Float = 48;
+
 	override public function new(selected:Int = 0) {
 		super();
 
@@ -34,7 +37,7 @@ class MenuState extends State
 		var index:Int = 0;
 		for (opt in options)
 		{
-			var optionText:FlxText = new FlxText(10, 10 + (index * 48), 0, PhraseManager.getPhrase('${phrasePrefix}_${opt[0]}', opt[0]), 32);
+			var optionText:FlxText = new FlxText(10, 10 + (index * (48)), 0, PhraseManager.getPhrase('${phrasePrefix}_${opt[0]}', opt[0]), TEXT_SIZE);
 			optionText.ID = index;
 			optGrp.add(optionText);
 

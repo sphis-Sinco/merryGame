@@ -4,6 +4,7 @@
     "phrases": {
       "menu_play": "gioca",
       "menu_settings": "opzioni",
+      "menu_credits": "credits",
       "menu_exit": "esci",
       
       "options_leave": "esci",
@@ -11,6 +12,8 @@
 
       "language_english": "inglese",
       "language_italian": "italiano",
-      "language_portuguese": "portoghese"
+      "language_portuguese": "portoghese",
+
+      "score":"score:"
     }
   }
