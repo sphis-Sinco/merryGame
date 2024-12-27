@@ -2,6 +2,8 @@ package states;
 
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
+import flixel.tweens.FlxTween;
+import substate.PauseSubState;
 
 class MenuState extends State
 {
@@ -44,11 +46,15 @@ class MenuState extends State
 			index++;
 		}
 
+		
+
 		postCreate();
 		updateText();
 
 		super.create();
 	}
+	
+	var blk:FlxSprite;
 
 	function updateText()
 	{

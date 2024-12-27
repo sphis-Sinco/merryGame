@@ -14,6 +14,7 @@
       "language_italian": "italiano",
       "language_portuguese": "português",
 
-      "score":"pontuação:"
+      "score":"pontuação:",
+      "paused":"PAUSED"
     }
   }
