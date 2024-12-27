@@ -85,11 +85,10 @@ class MenuState extends State
 		{
 			try
 			{
+				var soundPath:String = BackendAssets.sound('menu/'+(Std.string(options[CURSEL][0]).toLowerCase() == 'leave' ? 'Leave' : 'Select'));
+				
+				FlxG.sound.play(soundPath, 1);
 				options[CURSEL][1]();
-				if (Std.string(options[CURSEL][0]).toLowerCase() == 'leave')
-					FlxG.sound.play(BackendAssets.sound('menu/Leave'), 1);
-				else
-					FlxG.sound.play(BackendAssets.sound('menu/Select'), 1);
 			}
 			catch (e)
 			{

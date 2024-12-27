@@ -75,12 +75,12 @@ class PlayState extends State
 					PLAYER_CAN_JUMP = true;
 				}
 
-				FlxG.sound.play(BackendAssets.sound('gameplay/jump'), 1);
 			}
 			else if (ControlManager.JUMP_R && PLAYER_CAN_JUMP)
 			{
 				PLAYER_GRAVITY_TICKS = -(1 * PLAYER_JUMP_MULTIPLIER);
 				PLAYER_CAN_JUMP = false;
+				FlxG.sound.play(BackendAssets.sound('gameplay/jump'), 1);
 			}
 		}
 
