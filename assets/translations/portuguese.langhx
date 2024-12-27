@@ -15,6 +15,11 @@
       "language_italian": "italiano",
       "language_portuguese": "português",
 
+      "controls_changing_keybind": "Changing Keybind",
+      "controls_current_key": "current key",
+      "controls_press": "Press",
+      "controls_to_cancel":"to cancel",
+
       "controls_ui_back":"ui_back",
       "controls_ui_select":"ui_select",
       "controls_ui_down":"ui_down",
