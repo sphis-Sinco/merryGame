@@ -2,6 +2,10 @@ package substate;
 
 class PauseSubState extends SubState
 {
+    override function create() {
+        super.create();
+    }
+
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
