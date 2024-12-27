@@ -12,6 +12,7 @@ class PlayState extends State
 	public var PLAYER_CAN_JUMP:Bool = false;
 
 	public var CANDY_CANE_MOVEMENT_SPEED:Float = 4.0;
+	public var CANDY_CANE_MOVEMENT_MODIFIER:Float = 0.01;
 
 	public var SCORE:Null<Float> = 0.0;
 
@@ -64,13 +65,16 @@ class PlayState extends State
 		scoreText.text = '${PhraseManager.getPhrase('score','score:')} $SCORE';
 
 		candycane.x -= CANDY_CANE_MOVEMENT_SPEED;
-		if (candycane.x < 0 - candycane.width)
+		if (candycane.x < 0 - candycane.width) {
 			candycane.x = FlxG.width + candycane.width;
+			CANDY_CANE_MOVEMENT_SPEED += CANDY_CANE_MOVEMENT_MODIFIER;
+		}
 
 		if (player.overlaps(candycane))
 		{
 			SCORE++;
 			candycane.x = FlxG.width + candycane.width;
+			CANDY_CANE_MOVEMENT_SPEED -= CANDY_CANE_MOVEMENT_MODIFIER;
 		}
 
 		super.update(elapsed);
