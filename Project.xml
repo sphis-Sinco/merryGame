@@ -42,7 +42,6 @@
 	<haxelib name="flixel-ui" />
 
 	<haxelib name="langhaxe" version="0.0.5"/>
-	<haxelib name="polymod" version="1.7.0" unless="hl"/>
 
 	<!-- ______________________________ Haxedefines _____________________________ -->
 

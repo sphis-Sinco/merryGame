@@ -10,10 +10,6 @@ class InitState extends State
     override function create() {
         super.create();
 
-        #if !hl
-        Initalizer.scan();
-        #end
-
         FlxG.switchState(new MenuState());
     }
 
