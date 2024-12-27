@@ -18,6 +18,7 @@ class PlayState extends State
 	public var SCORE:Null<Float> = 0.0;
 
 	public static var PAUSED:Bool = false;
+	public static var PAUSE_TIME:Float = 0.0;
 
 	public var player:Player;
 
@@ -89,11 +90,16 @@ class PlayState extends State
 			CANDY_CANE_MOVEMENT_SPEED -= CANDY_CANE_MOVEMENT_MODIFIER;
 		}
 
-		if (ControlManager.UI_SELECT_R && !PAUSED)
+		if (ControlManager.UI_SELECT_R && !PAUSED && PAUSE_TIME < 1)
 		{
 			PAUSED = true;
 
-			if (PAUSED) openSubState(new PauseSubState());
+			if (PAUSED) {
+				openSubState(new PauseSubState());
+				PAUSE_TIME = 1.0;
+			}
+		} else if (!PAUSED && PAUSE_TIME > 0) {
+			PAUSE_TIME -= 0.1;
 		}
 
 		super.update(elapsed);
