@@ -22,21 +22,25 @@ class PlayState extends State
 
 	public var scoreText:FlxText;
 
-	override public function create()
-	{
+	override function preCreate() {
+		super.preCreate();
 		SCORE = 0;
-
+		
 		player = new Player(0,0);
 		player.screenCenter();
-		add(player);
 
 		candycane = new CandyCane(0,0);
 		candycane.screenCenter();
 		candycane.y -= 64;
 		candycane.x = FlxG.width + candycane.width;
-		add(candycane);
-
+		
 		scoreText = new FlxText(10,10,0,"",16);
+	}
+
+	override public function create()
+	{	
+		add(player);
+		add(candycane);
 		add(scoreText);
 
 		super.create();
