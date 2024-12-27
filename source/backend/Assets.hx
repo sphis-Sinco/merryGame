@@ -31,7 +31,7 @@ class Assets
 	{
 		var exists:Bool = false;
 
-		#if desktop
+		#if sys
 		exists = sys.FileSystem.exists(path);
 		#end
 
@@ -51,16 +51,16 @@ class Assets
 		return exists;
 	}
 
-	public static function makePath(path:String)
+	public static function makePath(path:String, ?content:String = '')
 	{
-		#if desktop
-		sys.io.File.saveContent(path, '');
+		#if sys
+		try { sys.io.File.saveContent(path, content); } catch(e) { trace(e); }
 		#end
 	}
 
 	public static function readFile(path:String)
 	{
-		#if desktop
+		#if sys
 		if (pathExists(path))
 			return sys.io.File.getContent(path);
 		#end
@@ -70,15 +70,17 @@ class Assets
 
 	public static function saveToFile(path:String, content:String)
 	{
-		#if desktop
-		sys.io.File.saveContent(path, content);
+		#if sys
+		if (pathExists(path))
+			sys.io.File.saveContent(path, content);
 		#end
 	}
 
 	public static function readDirectory(directory:String)
 	{
-		#if desktop
-		return sys.FileSystem.readDirectory(directory);
+		#if sys
+		if (pathExists(directory))
+			return sys.FileSystem.readDirectory(directory);
 		#end
 
 		return [];
