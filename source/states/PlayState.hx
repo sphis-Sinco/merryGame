@@ -29,10 +29,7 @@ class PlayState extends State
 	override function preCreate() {
 		super.preCreate();
 		SCORE = 0;
-	}
 
-	override public function create()
-	{
 		player = new Player(0,0);
 		player.screenCenter();
 
@@ -42,10 +39,17 @@ class PlayState extends State
 		candycane.x = FlxG.width + candycane.width;
 		
 		scoreText = new FlxText(10,10,0,"",16);
+	}
+
+	override public function create()
+	{
+		preCreate();
 
 		add(player);
 		add(candycane);
 		add(scoreText);
+
+		postCreate();
 
 		super.create();
 	}
