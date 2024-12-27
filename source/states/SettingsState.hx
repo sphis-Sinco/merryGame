@@ -9,7 +9,7 @@ class SettingsState extends MenuState
 		options = [
 			['leave', () -> FlxG.switchState(new MenuState())],
 			['language menu', () -> FlxG.switchState(new LanguageMenu())],
-			['controls menu', () -> FlxG.switchState(new ControlsMenu())]
+			// ['controls menu', () -> FlxG.switchState(new ControlsMenu())]
 		];
 
 		phrasePrefix = 'options';
