@@ -1,7 +1,5 @@
 package states;
 
-import polymod.Polymod;
-
 class InitState extends State
 {
 
@@ -12,9 +10,7 @@ class InitState extends State
     override function create() {
         super.create();
 
-        Polymod.scan({
-            modRoot: "mods/"
-        });
+        Initalizer.scan();
 
         FlxG.switchState(new MenuState());
     }

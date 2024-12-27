@@ -9,6 +9,7 @@ import input.ControlManager;
 import langhaxe.*;
 import langhaxe.LangHaxe.PhraseManager;
 import lime.utils.Assets;
+import modding.*;
 import openfl.utils.Assets as OpenFLAssets;
 import states.*;
 
