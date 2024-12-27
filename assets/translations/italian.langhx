@@ -15,13 +15,18 @@
       "language_italian": "italiano",
       "language_portuguese": "portoghese",
 
-      "controls_ui_back":"ui_back",
-      "controls_ui_select":"ui_select",
-      "controls_ui_down":"ui_down",
-      "controls_ui_up":"ui_up",
-      "controls_move_right":"move_right",
-      "controls_move_left":"move_left",
-      "controls_jump":"jump",
+      "controls_changing_keybind": "Cambia tasto",
+      "controls_current_key": "Tasto corrente",
+      "controls_press": "Premi",
+      "controls_to_cancel":"per cancellare",
+
+      "controls_ui_back":"ui_indietro",
+      "controls_ui_select":"ui_seleziona",
+      "controls_ui_down":"ui_sotto",
+      "controls_ui_up":"ui_sopra",
+      "controls_move_right":"muovi_a_destra",
+      "controls_move_left":"muovi_a_sinistra",
+      "controls_jump":"salta",
 
       "score":"punteggio:",
       "paused":"PAUSA"
